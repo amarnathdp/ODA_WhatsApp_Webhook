@@ -8,10 +8,6 @@
     "start:dev": "node_modules/.bin/nodemon --inspect src/server.js",
     "start": "node src/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/leobarros79/ODAWhatsAppIntegration.git"
-  },
   "author": "leo.barros@oracle.com",
   "license": "ISC",
   "dependencies": {
