@@ -91,8 +91,8 @@ app.post('/bot/message', async (req, res) => {
       logger.info('Received a message from ODA, processing message before sending to WhatsApp.');
       // await whatsApp._send(req.body);
 
-         phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
-            from = body_param.entry[0].changes[0].value.messages[0].from;
+            let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
+            let from = body_param.entry[0].changes[0].value.messages[0].from;
             let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
             let userName = body_param.entry[0].changes[0].value.contacts[0].profile.name;
             console.log("I am inside details -------------------------------------->");
