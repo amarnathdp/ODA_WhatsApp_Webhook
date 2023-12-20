@@ -86,7 +86,27 @@ app.post('/user/message', async (req, res) => {
 app.post('/bot/message', async (req, res) => {
     try {
       logger.info('Received a message from ODA, processing message before sending to WhatsApp.');
-      await whatsApp._send(req.body);
+      // await whatsApp._send(req.body);
+
+         phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
+            from = body_param.entry[0].changes[0].value.messages[0].from;
+            let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
+            let userName = body_param.entry[0].changes[0].value.contacts[0].profile.name;
+            console.log("I am inside details -------------------------------------->");
+            console.log("phone number " + phon_no_id);
+            console.log("from " + from);
+            console.log("Message from sender is --> " + msg_body);
+            console.log("User name of the sender-->" + userName);
+            // Sending Message from Whats app to ODA
+            const MessageModel = webhook.MessageModel();
+            const message = {
+                userId: 'anonymous',
+                profile: { firstName: userName, lastName: from },
+                messagePayload: MessageModel.textConversationMessage(msg_body)
+            };
+            console.log("Message before sending to ODA is ------>" + message);
+            webhook.send(message)
+        
       logger.info('Message Sent successfully to WhatsApp.');
       res.sendStatus(200);
     } catch (error) {
