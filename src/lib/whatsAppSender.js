@@ -83,11 +83,11 @@ class WhatsAppSender {
                 data: message
             };
             await axios(config)
-            //     .then( response => {
-            //     self.eventsEmitter.emit(Config.EVENT_WHATSAPP_MESSAGE_DELIVERED, response.data.messages[0].id);
-            // }).catch(function (error) {
-            //     throw new Error(error);
-            // });
+                .then( response => {
+                self.eventsEmitter.emit(Config.EVENT_WHATSAPP_MESSAGE_DELIVERED, response.data.messages[0].id);
+            }).catch(function (error) {
+                throw new Error(error);
+            });
         } catch (error) {
             throw error;
         }
