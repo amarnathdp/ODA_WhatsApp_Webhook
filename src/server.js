@@ -84,6 +84,9 @@ app.post('/user/message', async (req, res) => {
 
 // Handle incoming messages from ODA
 app.post('/bot/message', async (req, res) => {
+
+    let body_param = req.body;
+    
     try {
       logger.info('Received a message from ODA, processing message before sending to WhatsApp.');
       // await whatsApp._send(req.body);
